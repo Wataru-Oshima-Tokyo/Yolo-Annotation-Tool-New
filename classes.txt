@@ -1,2 +1,2 @@
-cat
-dog
+green_block
+pink_block
