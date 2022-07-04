@@ -31,7 +31,7 @@ def convert(size, box):
 """-------------------------------------------------------------------""" 
 
 """ Configure Paths"""   
-mypath = "images/"
+mypath = "images/labels/"
 outpath = "labels/"
 
 cls = "resized-image_outlet"
@@ -57,6 +57,7 @@ for txt_name in txt_name_list:
     txt_path = mypath + txt_name
     print("Input:" + txt_path)
     txt_file = open(txt_path, "r")
+    print(txt_file)
     lines = txt_file.read().split('\r\n')
        #for ubuntu, use "\r\n" instead of "\n"
     
@@ -82,7 +83,7 @@ for txt_name in txt_name_list:
             ymin = elems[1]
             ymax = elems[3]
             #
-            img_path = str('%s/images/%s/%s.JPEG'%(wd, cls, os.path.splitext(txt_name)[0]))
+            img_path = str('%s/images/%s.jpg'%(wd,  os.path.splitext(txt_name)[0]))
             #t = magic.from_file(img_path)
             #wh= re.search('(\d+) x (\d+)', t).groups()
             im=Image.open(img_path)
@@ -99,6 +100,6 @@ for txt_name in txt_name_list:
 
     """ Save those images with bb into list"""
     if(ct != 0):
-        list_file.write('%s/images/%s/%s.JPEG\n'%(wd, cls, os.path.splitext(txt_name)[0]))
+        list_file.write('%s/images/%s.jpg\n'%(wd, os.path.splitext(txt_name)[0]))
                 
 list_file.close()       
